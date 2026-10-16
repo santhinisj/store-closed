@@ -3,7 +3,7 @@
 A Chrome extension that blocks shopping sites during work hours (9 to 5, Mon–Fri by default).
 
 ## Install
-1. Unzip this folder.
+1. Clone the repository
 2. Go to `chrome://extensions` and turn on **Developer mode**.
 3. Click **Load unpacked** and pick the `stores-closed` folder.
 4. Pin it. Clicking the icon lets you block the site you're on or add any other site.
