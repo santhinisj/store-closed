@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store's Closed settings</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: var(--surface); color: var(--ink); padding: 3rem 1.25rem; line-height: 1.5; }
+    main { max-width: 34rem; margin: 0 auto; }
+    h1 { font-size: 1.6rem; margin: 0 0 0.25rem; }
+    .lead { color: var(--muted); margin: 0 0 2rem; }
+    .lock {
+      border-left: 4px solid var(--enamel); background: var(--field);
+      padding: 0.8rem 1rem; margin-bottom: 2rem; border-radius: 0 6px 6px 0;
+    }
+    fieldset { border: 0; padding: 0; margin: 0 0 1.75rem; }
+    legend, .field-label { font-weight: 600; margin-bottom: 0.5rem; display: block; }
+    .hint { color: var(--muted); font-size: 0.9rem; margin: 0.35rem 0 0; }
+    .hours { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; }
+    .days { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .days label {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      border: 1px solid var(--line); background: var(--field);
+      border-radius: 6px; padding: 0.4rem 0.7rem; cursor: pointer;
+    }
+    textarea { width: 100%; min-height: 14rem; resize: vertical; font-size: 0.95rem; }
+    .actions { display: flex; align-items: center; gap: 1rem; }
+    #saved { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Store's Closed</h1>
+    <p class="lead">Shopping sites redirect to a closed sign during the hours you set here.</p>
+
+    <div class="lock" id="lock" hidden>
+      The store is closed right now, so these settings are locked until <strong id="unlock"></strong>.
+    </div>
+
+    <form id="form">
+      <fieldset>
+        <legend>Work hours</legend>
+        <div class="hours">
+          <input type="time" id="start" required aria-label="Start time">
+          <span>to</span>
+          <input type="time" id="end" required aria-label="End time">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Days</legend>
+        <div class="days" id="days"></div>
+      </fieldset>
+
+      <fieldset>
+        <label class="field-label" for="domains">Blocked sites</label>
+        <textarea id="domains" spellcheck="false"></textarea>
+        <p class="hint">One per line. Blocking amazon.ca also blocks its subdomains, like smile.amazon.ca.</p>
+      </fieldset>
+
+      <div class="actions">
+        <button type="submit" id="save">Save settings</button>
+        <span id="saved" role="status"></span>
+      </div>
+    </form>
+  </main>
+  <script type="module" src="options.js"></script>
+</body>
+</html>

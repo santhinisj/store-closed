@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Store's closed</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      min-height: 100vh; display: grid; place-items: center; padding: 2rem 1rem;
+      background: radial-gradient(ellipse at 50% 0%, var(--door), var(--door-deep) 70%);
+      color: #e9efed;
+    }
+    main { width: min(30rem, 100%); text-align: center; }
+    .hanger { display: flex; justify-content: center; height: 4.5rem; }
+    .hanger svg { overflow: visible; }
+    .sign {
+      background: var(--sign); color: var(--enamel);
+      border: 6px solid var(--enamel); border-radius: 14px;
+      padding: 1.4rem 1rem 1.2rem; margin-top: -0.4rem;
+      box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.55);
+      transform-origin: 50% -4.5rem;
+      animation: swing 2.6s ease-out 1;
+    }
+    @keyframes swing {
+      0% { transform: rotate(7deg); } 25% { transform: rotate(-5deg); }
+      50% { transform: rotate(3deg); } 75% { transform: rotate(-1.5deg); }
+      100% { transform: rotate(0); }
+    }
+    .sign h1 {
+      margin: 0; font-family: "Avenir Next Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+      font-weight: 800; font-stretch: condensed; font-size: clamp(3.5rem, 15vw, 6rem);
+      line-height: 0.9; letter-spacing: 0.04em;
+    }
+    .sign p { margin: 0.6rem 0 0; color: var(--ink); font-size: 1.05rem; }
+    .sign strong { color: var(--enamel); }
+    .note { margin: 2rem auto 0; max-width: 24rem; line-height: 1.5; color: #c4d1cd; }
+    details { margin-top: 2.5rem; text-align: left; }
+    summary { cursor: pointer; color: #c4d1cd; text-align: center; }
+    .break { margin-top: 1rem; display: grid; gap: 0.6rem; }
+    .break label { font-size: 0.92rem; line-height: 1.45; color: #c4d1cd; }
+    .break q { color: #fff; font-style: italic; }
+    .break input { width: 100%; }
+    .status { min-height: 1.4em; font-size: 0.9rem; color: var(--brass); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="hanger" aria-hidden="true">
+      <svg width="120" height="72" viewBox="0 0 120 72">
+        <circle cx="60" cy="6" r="5" fill="var(--brass)"/>
+        <path d="M60 8 L14 70 M60 8 L106 70" stroke="var(--brass)" stroke-width="2.5" fill="none"/>
+      </svg>
+    </div>
+    <div class="sign">
+      <h1>CLOSED</h1>
+      <p>Open again at <strong id="reopen">5:00 PM</strong></p>
+    </div>
+    <p class="note" id="site">Shopping sites are blocked during work hours. Whatever's in the cart will still be there tonight.</p>
+
+    <details>
+      <summary>Need to buy something right now?</summary>
+      <div class="break">
+        <label for="phrase">Type <q id="phrase-text"></q> to open the store for <span id="mins"></span> minutes.</label>
+        <input id="phrase" autocomplete="off" spellcheck="false">
+        <button id="snooze" disabled>Open for <span id="mins2"></span> minutes</button>
+        <div class="status" id="status" role="status"></div>
+      </div>
+    </details>
+  </main>
+  <script type="module" src="blocked.js"></script>
+</body>
+</html>

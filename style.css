@@ -1,0 +1,40 @@
+:root {
+  --door: #1d3a35;
+  --door-deep: #142a26;
+  --sign: #fdfcf8;
+  --enamel: #b3261e;
+  --brass: #c8a24a;
+  --ink: #1f2423;
+  --muted: #5d6764;
+  --surface: #f3f5f4;
+  --field: #ffffff;
+  --line: #cfd6d3;
+  --focus: #c8a24a;
+  color-scheme: light;
+  font-family: "Avenir Next", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sign: #f4f1e8;
+    --surface: #111c1a;
+    --field: #1a2826;
+    --ink: #e8ecea;
+    --muted: #9eaaa6;
+    --line: #2f403d;
+    color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+button {
+  font: inherit; font-weight: 600; cursor: pointer;
+  border: 0; border-radius: 6px; padding: 0.7rem 1.1rem;
+  background: var(--brass); color: var(--door-deep);
+}
+button:disabled { opacity: 0.4; cursor: not-allowed; }
+input, textarea {
+  font: inherit; color: var(--ink); background: var(--field);
+  border: 1px solid var(--line); border-radius: 6px; padding: 0.55rem 0.7rem;
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }

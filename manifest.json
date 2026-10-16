@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Store's Closed",
+  "version": "1.1.0",
+  "description": "Blocks shopping sites during your work hours.",
+  "permissions": ["declarativeNetRequest", "storage", "alarms", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "options_page": "options.html",
+  "action": { "default_title": "Store's Closed", "default_popup": "popup.html" },
+  "web_accessible_resources": [{ "resources": ["blocked.html"], "matches": ["<all_urls>"] }]
+}

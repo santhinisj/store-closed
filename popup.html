@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Store's Closed</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { width: 300px; background: var(--surface); color: var(--ink); padding: 1rem; line-height: 1.45; }
+    .state { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; }
+    .dot { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: var(--muted); flex: none; }
+    .dot.on { background: var(--enamel); }
+    .state p { margin: 0; font-weight: 600; }
+    .current {
+      background: var(--field); border: 1px solid var(--line); border-radius: 8px;
+      padding: 0.75rem; margin-bottom: 1rem;
+    }
+    .current .host { font-weight: 600; word-break: break-all; margin: 0 0 0.6rem; }
+    .current button { width: 100%; }
+    form { display: flex; gap: 0.4rem; }
+    form input { flex: 1; min-width: 0; }
+    form button { padding: 0.55rem 0.8rem; }
+    .msg { min-height: 1.3em; font-size: 0.88rem; color: var(--muted); margin: 0.5rem 0 0.75rem; }
+    .msg.ok { color: var(--ink); }
+    a { color: var(--muted); font-size: 0.88rem; }
+  </style>
+</head>
+<body>
+  <div class="state">
+    <span class="dot" id="dot"></span>
+    <p id="state-text"></p>
+  </div>
+
+  <div class="current" id="current" hidden>
+    <p class="host" id="host"></p>
+    <button id="block-current">Block this site</button>
+  </div>
+
+  <form id="add-form">
+    <input id="add-input" placeholder="example.com" aria-label="Website to block" autocomplete="off" spellcheck="false">
+    <button type="submit">Add</button>
+  </form>
+  <p class="msg" id="msg" role="status"></p>
+
+  <a href="#" id="open-settings">Edit hours and blocked sites</a>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
